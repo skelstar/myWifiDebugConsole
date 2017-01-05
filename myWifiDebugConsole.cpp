@@ -4,7 +4,7 @@
 
 static ESP8266WebServer _server(80);
 
-char* messages[20];
+char* messages[20] = {};
 
 myWifiDebugConsole::myWifiDebugConsole()
 {
@@ -12,12 +12,15 @@ myWifiDebugConsole::myWifiDebugConsole()
 
 void myWifiDebugConsole::init() 
 {
-    _server.on("/", handleRoot(5));
+    _server.on("/", handleRoot);
     _server.begin();
 }
 
-void myWifiDebugConsole::handleRoot(int test) 
+void myWifiDebugConsole::handleRoot() 
 {
+	char* test[20];
+	test = messages->testMemberFunction();
+
     char temp[600];
     int sec = millis() / 1000;
     int min = sec / 60;
@@ -31,7 +34,7 @@ void myWifiDebugConsole::handleRoot(int test)
   	strcat(temp, "<body>");
     strcat(temp, "<h1>Hello from ESP8266!</h1>");
     for (int i=0; i<20; i++) {
-    	strcat(temp, messages[i]);
+		strcat(temp, test[i]);
     }
   	strcat(temp, "</body>");
 	strcat(temp, "</html>");
@@ -54,6 +57,10 @@ void myWifiDebugConsole::handleRoot(int test)
 //         sec % 60
 //     );
 	_server.send(200, "text/html", temp);
+}
+
+char*[20] myWifiDebugConsole::testMemberFunction() {
+
 }
 
 void myWifiDebugConsole::handleClient()

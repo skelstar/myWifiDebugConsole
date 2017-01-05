@@ -13,7 +13,9 @@ class myWifiDebugConsole
 		char* messages[20];
 
 	private:
+		static int* ref;
 		static void handleRoot();
+		void testMemberFunction();
 };
 
 #endif
