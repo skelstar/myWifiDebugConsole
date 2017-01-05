@@ -10,6 +10,7 @@ class myWifiDebugConsole
 		myWifiDebugConsole();
 		void init();
 		void handleClient();
+		char* messages[20];
 
 	private:
 		static void handleRoot();
