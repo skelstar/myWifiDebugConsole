@@ -1,0 +1,2 @@
+myWifiDebugConsole	KEYWORD1
+handleClient	KEYWORD2
